@@ -1,0 +1,10 @@
+#orderMain {
+  max-width: 800px;
+  margin: auto;
+}
+#orderHeading {
+  padding-top: 10px;
+}
+#orderTable {
+  width: 100%;
+}

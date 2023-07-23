@@ -1,0 +1,25 @@
+#accountMain {
+  background-color: aliceblue;
+  width: 400px;
+  padding: 20px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 20px;
+}
+#table {
+  line-height: 3rem;
+  width: 350px;
+}
+
+.th {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+#orders {
+  color: rgba(252, 4, 4, 0.664);
+  font-weight: 500;
+}
+.logout {
+  margin-top: 30px;
+}

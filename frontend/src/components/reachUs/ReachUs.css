@@ -1,0 +1,39 @@
+#reachHeadDiv {
+  width: 400px;
+  margin: 20px auto;
+}
+#reachHead {
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+#reachHeadpara {
+  color: #000;
+}
+#form {
+  background-image: url("../../../images/reachUsBackground.jpg");
+  width: fit-content;
+  margin: 20px auto;
+  padding: 20px 80px;
+  text-align: left;
+}
+#formTitle {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.formLabel {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+.formInput {
+  width: 300px;
+  border-style: none;
+}
+.formInput:focus {
+  outline: none;
+  border: 2px solid rgb(147, 241, 147);
+}
+.formBtn {
+  margin-top: 10px;
+}

@@ -1,0 +1,20 @@
+#mediaDiv {
+  background-color: aliceblue;
+  width: 400px;
+  padding: 20px;
+  margin: 20px auto;
+  text-align: justify;
+  border-radius: 20px;
+}
+#mediaHeader {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+.mediaTxt {
+  color: #000;
+  margin-top: 50px;
+}
+.mediaLink {
+  color: #000;
+}

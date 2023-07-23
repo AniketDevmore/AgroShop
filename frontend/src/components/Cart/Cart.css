@@ -1,0 +1,19 @@
+#cartHeading {
+  padding-top: 10px;
+}
+
+#cartMain {
+  max-width: 800px;
+  margin: auto;
+}
+
+#cartTable {
+  width: 100%;
+}
+.cartRemoveBtn {
+  border: none;
+  background-color: inherit;
+  color: rgb(255, 0, 0);
+  text-shadow: 2px 2px 2px rgb(151, 82, 82);
+  border-radius: 30px;
+}

@@ -1,0 +1,25 @@
+#adminMainDiv {
+  background-color: rgb(2, 2, 2);
+  padding: 10px;
+}
+
+#adminUl {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 0 30px;
+}
+.adminLi {
+  color: #000;
+  margin: 15px;
+}
+.link {
+  text-decoration: none;
+  color: #000;
+  background-color: aliceblue;
+  padding: 8px;
+  border-radius: 10px;
+}

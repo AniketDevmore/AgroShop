@@ -1,0 +1,10 @@
+:root {
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgb(184, 253, 230);
+  height: 100vh;
+  text-align: center;
+}
+#root {
+  height: 0;
+}

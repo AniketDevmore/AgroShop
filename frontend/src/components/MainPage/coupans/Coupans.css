@@ -1,0 +1,9 @@
+.cupLi {
+  list-style: none;
+  display: inline-block;
+  margin: 10px;
+}
+.coupan {
+  height: 300px;
+  width: 400px;
+}

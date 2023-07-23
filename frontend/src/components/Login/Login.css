@@ -1,0 +1,9 @@
+#login {
+  max-width: fit-content;
+  margin: 100px auto;
+  padding: 30px;
+  border: 2px solid rgb(119, 245, 239);
+  border-radius: 30px;
+  background-color: rgb(119, 245, 239);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

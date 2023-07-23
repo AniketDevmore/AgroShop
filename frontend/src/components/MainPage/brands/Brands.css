@@ -1,0 +1,10 @@
+.brandLi {
+  list-style: none;
+  display: inline-block;
+  margin: 10px;
+}
+.brandImg {
+  height: 200px;
+  width: 200px;
+  border-radius: 20px;
+}

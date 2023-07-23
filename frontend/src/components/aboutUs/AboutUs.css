@@ -1,0 +1,46 @@
+#aboutMain {
+  margin-top: 10px;
+}
+#title {
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+#aboutSub {
+  border: 2px solid gray;
+  width: 350px;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+#moto {
+  margin-top: 4px;
+}
+#content {
+  color: black;
+  padding: 5px 20px;
+  text-align: justify;
+}
+.founderDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.founderLi {
+  list-style: none;
+  background-color: beige;
+  width: 140px;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+.aboutImg,
+.adImg {
+  border-radius: 50%;
+  background-color: brown;
+  height: 100px;
+  width: 100px;
+}
+.adImg {
+  height: 70px;
+  width: 70px;
+}
