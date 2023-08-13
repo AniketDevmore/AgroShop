@@ -1,4 +1,5 @@
 import React from "react";
+import "./MainPageCarousel.css";
 
 const MainPageCarousel = () => {
   return (
@@ -8,26 +9,18 @@ const MainPageCarousel = () => {
         className="carousel slide carousel-fade"
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner">
-          <div
-            className="carousel-item active"
-            data-bs-interval="4000"
-            style={{ height: "400px", maxWidth: "100%", margin: " auto" }}
-          >
+        <div className="carousel-inner carousel-outer">
+          <div className="carousel-item active" data-bs-interval="4000">
             <img
-              style={{ height: "100%", maxWidth: "100%", margin: "5px auto" }}
+              style={{ height: "400px", maxWidth: "100vw", margin: "auto" }}
               src="../../../images/carosel1.jpg"
               className="d-block w-100"
               alt="carosel1"
             />
           </div>
-          <div
-            className="carousel-item"
-            data-bs-interval="4000"
-            style={{ height: "400px", maxWidth: "100%", margin: " auto" }}
-          >
+          <div className="carousel-item" data-bs-interval="4000">
             <img
-              style={{ height: "100%", maxWidth: "100%", margin: "5px auto" }}
+              style={{ height: "400px", maxWidth: "100vw", margin: "auto" }}
               src="../../../images/carosel2.jpg"
               className="d-block w-100"
               alt="carosel2"

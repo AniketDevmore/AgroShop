@@ -1,12 +1,20 @@
 /* products representation */
 .products {
-  background-color: #fff;
+  background-color: #ffffff;
   border-bottom: 2px solid rgba(54, 64, 65, 0.26);
 }
 .proList {
   list-style: none;
   display: inline-block;
-  margin: 30px;
+  width: 150px;
+  margin: 20px 10px;
+  padding: 10px;
+  box-shadow: 1px 1px 5px 1px black;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.proList:hover {
+  box-shadow: 2px 2px 7px 2px black;
 }
 img {
   height: 40px;

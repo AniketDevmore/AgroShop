@@ -7,7 +7,12 @@
 }
 #logoLink {
   text-decoration: none;
-  color: #c9f7f4;
+  color: #d0ffbd;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+#logoLink:hover {
+  box-shadow: 1px 1px 15px 2px rgb(206, 250, 177);
 }
 #logo {
   font-family: "Lemon", cursive;
@@ -37,13 +42,16 @@
 }
 #nav {
   background-color: rgb(4, 114, 187);
-  padding: 5px;
+  padding: 20px 5px 5px 5px;
 }
 .navLink {
   text-decoration: none;
   font-size: 1.2rem;
   color: aliceblue;
   margin-right: 20px;
+}
+.navLink:hover {
+  color: #89f592;
 }
 
 #cartIteams {
@@ -53,6 +61,6 @@
   padding: 2px 6px;
   position: absolute;
   right: 56px;
-  top: 51px;
+  top: 65px;
   border-radius: 30px;
 }

@@ -5,5 +5,11 @@
 }
 .coupan {
   height: 300px;
-  width: 400px;
+  width: 300px;
+}
+@media screen and (max-width: 750px) {
+  .coupan {
+    height: 200px;
+    width: 200px;
+  }
 }
