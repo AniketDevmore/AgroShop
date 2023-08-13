@@ -17,6 +17,8 @@ import RemoveProduct from "./components/AdminPage/removeProduct/RemoveProduct";
 import EditProduct from "./components/AdminPage/editProduct/EditProduct";
 import EditOrder from "./components/AdminPage/editOrder/EditOrder";
 import CancelOrder from "./components/AdminPage/cancelOrder/CancelOrder";
+import AllProducts from "./components/allProduct/AllProducts";
+import SingleProduct from "./components/singleProduct/SingleProduct";
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +74,22 @@ export const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <WishList />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/product/:type",
+    element: (
+      <PrivateRoute>
+        <AllProducts />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/product-information/:id",
+    element: (
+      <PrivateRoute>
+        <SingleProduct />
       </PrivateRoute>
     ),
   },

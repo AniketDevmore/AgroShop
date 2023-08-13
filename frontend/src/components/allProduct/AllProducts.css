@@ -1,0 +1,43 @@
+.allProductOuter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: left;
+}
+.allProductOuter > div {
+  margin: 20px 30px;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+.allProductOuter > div > div {
+  width: 200px;
+  height: 200px;
+  background-color: rgb(165, 165, 165);
+}
+
+.allProductOuter h4 {
+  margin: 10px auto 30px auto;
+  color: #535353;
+}
+.allProductOuter h6 {
+  color: #202020;
+}
+.allProductOuter h6 span {
+  text-decoration: line-through;
+}
+.allProductOuter p {
+  color: #161616;
+  font-size: 0.8rem;
+}
+.allProductOuter button {
+  width: 100%;
+  background-color: rgb(36, 87, 30);
+  border: none;
+  padding: 7px;
+  color: #f0f0f0;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+.allProductOuter button:hover {
+  background-color: rgb(46, 109, 39);
+}

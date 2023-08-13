@@ -1,4 +1,5 @@
 const User = require("./Schemas/User");
+const Product = require("./Schemas/Product");
 const { v4: uuidv4 } = require("uuid");
 
 const createNewUser = (userData) => {
@@ -28,8 +29,13 @@ const getUserById = (id) => {
   return User.findOne({ id: id });
 };
 
+const getPro = (type) => {
+  return Product.find({ catogary: type });
+};
+
 module.exports = {
   createNewUser,
   getUserByEmail,
   getUserById,
+  getPro,
 };
