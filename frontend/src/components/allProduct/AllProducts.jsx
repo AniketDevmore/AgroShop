@@ -39,11 +39,13 @@ const AllProducts = () => {
             <div>
               <img src={ele.img[0]} alt={ele.catogary} />
             </div>
-            <h4>{ele.product}</h4>
+            <h4>{ele.id}</h4>
             <h6>
-              ₹{ele.price["100"]} <span>original</span>
+              ₹{ele.details[0]["1"]} <span>{ele.details[1]["1"]}</span>
             </h6>
-            <p>100 ml</p>
+            <p>
+              {ele.details[2]["1"]} {ele.unit}
+            </p>
 
             <button onClick={() => viewProductDetail(ele)}>View Product</button>
           </div>

@@ -4,13 +4,12 @@ const { Schema } = mongoose;
 const productSchema = new Schema({
   id: String,
   description: String,
-  price: Object,
+  details: [Object],
   company: String,
-  stock: Boolean,
   img: [String],
-  quantity: Object,
+  content: String,
+  unit: String,
   catogary: String,
-  product: String,
 });
 
 const Product = mongoose.model("Admin", productSchema);
