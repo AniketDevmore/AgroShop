@@ -22,7 +22,7 @@ const AllProducts = () => {
   };
 
   const viewProductDetail = (ele) => {
-    console.log(ele);
+    // console.log(ele);
     navigate(`/product-information/${ele.id}`);
   };
 
@@ -41,7 +41,7 @@ const AllProducts = () => {
             </div>
             <h4>{ele.id}</h4>
             <h6>
-              ₹{ele.details[0]["1"]} <span>{ele.details[1]["1"]}</span>
+              Price: ₹{ele.details[0]["1"]} <span>₹{ele.details[1]["1"]}</span>
             </h6>
             <p>
               {ele.details[2]["1"]} {ele.unit}

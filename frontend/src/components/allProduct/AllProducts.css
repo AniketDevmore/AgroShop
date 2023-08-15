@@ -18,12 +18,16 @@
 .allProductOuter h4 {
   margin: 10px auto 30px auto;
   color: #535353;
+  font-size: 1.6rem;
 }
 .allProductOuter h6 {
   color: #202020;
+  font-size: 1.2rem;
 }
 .allProductOuter h6 span {
   text-decoration: line-through;
+  font-size: 0.7rem;
+  margin-left: 4px;
 }
 .allProductOuter p {
   color: #161616;

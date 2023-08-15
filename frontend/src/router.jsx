@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/product-information/:id",
+    path: "/product-information/:pro",
     element: (
       <PrivateRoute>
         <SingleProduct />

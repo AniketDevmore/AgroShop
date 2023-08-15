@@ -1,4 +1,4 @@
-const { getUserById, getPro } = require("../db/db");
+const { getUserById, getPro, getproductById } = require("../db/db");
 
 const getUserDataById = (req, res, next) => {
   // console.log(req.params.id);
@@ -28,7 +28,21 @@ const getProduct = (req, res, next) => {
     });
 };
 
+const getProductData = (req, res, next) => {
+  getproductById(req.params.id)
+    .then((data) => {
+      res.json({
+        status: "Success",
+        data: data,
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
 module.exports = {
   getUserDataById,
   getProduct,
+  getProductData,
 };

@@ -33,9 +33,14 @@ const getPro = (type) => {
   return Product.find({ catogary: type });
 };
 
+const getproductById = (id) => {
+  return Product.find({ id: id });
+};
+
 module.exports = {
   createNewUser,
   getUserByEmail,
   getUserById,
   getPro,
+  getproductById,
 };
