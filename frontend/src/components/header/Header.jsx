@@ -1,9 +1,11 @@
 import React from "react";
 import "./Header.css";
 import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const { id } = useParams();
+  const profileData = useSelector((state) => state.counter.profile);
+  let id = profileData.id;
   return (
     <div>
       <header>
@@ -12,7 +14,7 @@ const Header = () => {
       <nav id="nav">
         <ul id="navUl">
           <div id="logo">
-            <Link id="logoLink" to={`/mainPage/${id}`}>
+            <Link id="logoLink" to={`/mainPage`}>
               FarmCart
             </Link>
           </div>

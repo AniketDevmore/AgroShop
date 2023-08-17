@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -14,6 +15,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { addUserProfile } from "../../slices/counterSlice";
 
 const NewLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,6 +27,7 @@ const NewLogin = () => {
   };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -39,9 +42,12 @@ const NewLogin = () => {
         // console.log(result.data);
         if (result.data.status === "Success") {
           if (result.data.data.type === "user") {
-            // console.log(result.data.data.id);
+            // console.log(result.data.data);
+            dispatch(addUserProfile(result.data.data));
+
             sessionStorage.setItem("token", result.data.token);
-            navigate(`/mainPage/${result.data.data.id}`);
+
+            navigate(`/mainPage`);
           } else if (result.data.data.type === "admin") {
             sessionStorage.setItem("token", result.data.token);
             navigate(`/adminPage/${result.data.data.id}`);
