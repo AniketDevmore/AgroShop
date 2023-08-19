@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./Category.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Category = () => {
+  const { id } = useParams("id");
   const navigate = useNavigate();
   const clickHandle = (data) => {
-    navigate(`/product/${data}`);
+    navigate(`/product/${id}/${data}`);
   };
   return (
     <div>

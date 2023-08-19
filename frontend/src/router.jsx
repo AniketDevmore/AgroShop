@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
     element: <PrivacyPolicy />,
   },
   {
-    path: "/mainPage",
+    path: "/mainPage/:id",
     element: (
       <PrivateRoute>
         <MainPage />
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/product/:type",
+    path: "/product/:id/:type",
     element: (
       <PrivateRoute>
         <AllProducts />
@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/product-information/:pro",
+    path: "/product-information/:id/:pro",
     element: (
       <PrivateRoute>
         <SingleProduct />

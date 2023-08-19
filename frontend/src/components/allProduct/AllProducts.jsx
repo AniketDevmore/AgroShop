@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const AllProducts = () => {
+  const { id } = useParams("id");
   const [productList, setProductList] = useState([]);
   const navigate = useNavigate();
   const { type } = useParams("type");
@@ -23,7 +24,7 @@ const AllProducts = () => {
 
   const viewProductDetail = (ele) => {
     // console.log(ele);
-    navigate(`/product-information/${ele.id}`);
+    navigate(`/product-information/${id}/${ele.id}`);
   };
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const profileData = useSelector((state) => state.counter.profile);
-  let id = profileData.id;
+  let { id } = useParams("id");
   return (
     <div>
       <header>
@@ -14,7 +14,7 @@ const Header = () => {
       <nav id="nav">
         <ul id="navUl">
           <div id="logo">
-            <Link id="logoLink" to={`/mainPage`}>
+            <Link id="logoLink" to={`/mainPage/${id}`}>
               FarmCart
             </Link>
           </div>

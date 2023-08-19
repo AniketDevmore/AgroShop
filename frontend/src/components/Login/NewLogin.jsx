@@ -27,7 +27,7 @@ const NewLogin = () => {
   };
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const {
     register,
@@ -43,11 +43,11 @@ const NewLogin = () => {
         if (result.data.status === "Success") {
           if (result.data.data.type === "user") {
             // console.log(result.data.data);
-            dispatch(addUserProfile(result.data.data));
+            // dispatch(addUserProfile(result.data.data));
 
             sessionStorage.setItem("token", result.data.token);
 
-            navigate(`/mainPage`);
+            navigate(`/mainPage/${result.data.data.id}`);
           } else if (result.data.data.type === "admin") {
             sessionStorage.setItem("token", result.data.token);
             navigate(`/adminPage/${result.data.data.id}`);
