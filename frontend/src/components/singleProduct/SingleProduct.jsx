@@ -7,6 +7,12 @@ import { useParams } from "react-router-dom";
 
 const SingleProduct = () => {
   const [productData, setProductData] = useState([]);
+  const [packPrice, setPackPrice] = useState({
+    pack: "",
+    price: 0,
+    original: 0,
+    unit: "",
+  });
 
   const { pro } = useParams("pro");
 
@@ -15,7 +21,7 @@ const SingleProduct = () => {
       .get(`http://localhost:8090/user/getProductData/${pro}`)
       .then((data) => {
         setProductData(data.data.data);
-        console.log(data.data.data);
+        // console.log(data.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -25,6 +31,40 @@ const SingleProduct = () => {
   useEffect(() => {
     getProductData();
   }, []);
+
+  const pricePackHandler = (pack, price, original, unit) => {
+    // console.log(pack, price, original);
+    setPackPrice({ pack: pack, price: price, original: original, unit: unit });
+  };
+
+  // add to cart button function
+  const addToCartHandler = (data) => {
+    // console.log(data);
+
+    let newData = {};
+    newData.id = data.id;
+    newData.catogary = data.catogary;
+    newData.quantity = 1;
+    newData.pack = packPrice.pack;
+    newData.price = packPrice.price;
+    newData.unit = packPrice.unit;
+    console.log(newData);
+  };
+
+  // add to wishlist handler
+  const addToWishHandler = (data) => {
+    // console.log(data);
+
+    let newData = {};
+    newData.id = data.id;
+    newData.catogary = data.catogary;
+    newData.quantity = 1;
+    newData.pack = packPrice.pack;
+    newData.price = packPrice.price;
+    newData.unit = packPrice.unit;
+    console.log(newData);
+  };
+
   return (
     <div>
       <Header />
@@ -38,11 +78,19 @@ const SingleProduct = () => {
               <div>
                 <h1>{ele.id}</h1>
                 <h5>
-                  Price: ₹ {ele.details[0]["1"]}{" "}
-                  <span>₹ {ele.details[1]["1"]}</span>
+                  Price: ₹{" "}
+                  {packPrice.price > 0 ? packPrice.price : ele.details[0][1]}{" "}
+                  <span>
+                    ₹{" "}
+                    {packPrice.original > 0
+                      ? packPrice.original
+                      : ele.details[1][1]}
+                  </span>
                 </h5>
                 <h6>
-                  Packing: {ele.details[2][1]} {ele.unit}
+                  Packing:{" "}
+                  {packPrice.pack > 0 ? packPrice.pack : ele.details[2][1]}{" "}
+                  {ele.unit}
                 </h6>
               </div>
               {/* Object.keys(ele.details["1"]).length */}
@@ -50,7 +98,21 @@ const SingleProduct = () => {
               {/* price section */}
               <div className="singleProPriceBox">
                 {ele.details[2][1] ? (
-                  <div>
+                  <div
+                    style={
+                      packPrice.price === ele.details[0][1]
+                        ? { border: "3px solid rgb(32, 107, 44)" }
+                        : {}
+                    }
+                    onClick={() =>
+                      pricePackHandler(
+                        ele.details[2][1],
+                        ele.details[0][1],
+                        ele.details[1][1],
+                        ele.unit
+                      )
+                    }
+                  >
                     <h4>
                       {ele.details[2][1]} {ele.unit}
                     </h4>
@@ -61,7 +123,21 @@ const SingleProduct = () => {
                 )}
 
                 {ele.details[2][2] ? (
-                  <div>
+                  <div
+                    style={
+                      packPrice.price === ele.details[0][2]
+                        ? { border: "3px solid rgb(32, 107, 44)" }
+                        : {}
+                    }
+                    onClick={() =>
+                      pricePackHandler(
+                        ele.details[2][2],
+                        ele.details[0][2],
+                        ele.details[1][2],
+                        ele.unit
+                      )
+                    }
+                  >
                     <h4>
                       {ele.details[2][2]} {ele.unit}
                     </h4>
@@ -72,7 +148,21 @@ const SingleProduct = () => {
                 )}
 
                 {ele.details[2][3] ? (
-                  <div>
+                  <div
+                    style={
+                      packPrice.price === ele.details[0][3]
+                        ? { border: "3px solid rgb(32, 107, 44)" }
+                        : {}
+                    }
+                    onClick={() =>
+                      pricePackHandler(
+                        ele.details[2][3],
+                        ele.details[0][3],
+                        ele.details[1][3],
+                        ele.unit
+                      )
+                    }
+                  >
                     <h4>
                       {ele.details[2][3]} {ele.unit}
                     </h4>
@@ -82,10 +172,18 @@ const SingleProduct = () => {
                   <></>
                 )}
               </div>
-              <div className="singleProBtn">
-                <button>Add To Cart</button>
-                <button>Add To Wishlist</button>
-              </div>
+              {packPrice.price > 0 ? (
+                <div className="singleProBtn">
+                  <button onClick={() => addToCartHandler(ele)}>
+                    Add To Cart
+                  </button>
+                  <button onClick={() => addToWishHandler(ele)}>
+                    Add To Wishlist
+                  </button>
+                </div>
+              ) : (
+                <p>Please Seletct Above Packing Size.</p>
+              )}
             </div>
 
             <div className="singleProDescrip">
