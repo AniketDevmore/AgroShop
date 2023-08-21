@@ -1,4 +1,10 @@
-const { getUserById, getPro, getproductById } = require("../db/db");
+const {
+  getUserById,
+  getPro,
+  getproductById,
+  addWishlist,
+  addCart,
+} = require("../db/db");
 
 const getUserDataById = (req, res, next) => {
   // console.log(req.params.id);
@@ -41,8 +47,38 @@ const getProductData = (req, res, next) => {
     });
 };
 
+const addToWishlist = (req, res, next) => {
+  // console.log(req.body, req.params.id);
+  addWishlist(req.params.id, req.body)
+    .then((userData) => {
+      // console.log(userData);
+      res.json({
+        status: "Product Successfully Added to Wishlist",
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
+const addToCart = (req, res, next) => {
+  // console.log(req.body, req.params.id);
+  addCart(req.params.id, req.body)
+    .then((userData) => {
+      // console.log(userData);
+      res.json({
+        status: "Product Successfully Added to Cart",
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
 module.exports = {
   getUserDataById,
   getProduct,
   getProductData,
+  addToWishlist,
+  addToCart,
 };

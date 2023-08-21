@@ -10,6 +10,8 @@ const userSchema = new Schema({
   confirm: String,
   age: Number,
   type: String,
+  cart: [Object],
+  wishlist: [Object],
 });
 
 const User = mongoose.model("User", userSchema);

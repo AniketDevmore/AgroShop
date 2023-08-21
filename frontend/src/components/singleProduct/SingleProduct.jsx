@@ -15,6 +15,7 @@ const SingleProduct = () => {
   });
 
   const { pro } = useParams("pro");
+  const { id } = useParams("id");
 
   const getProductData = () => {
     axios
@@ -49,6 +50,18 @@ const SingleProduct = () => {
     newData.price = packPrice.price;
     newData.unit = packPrice.unit;
     console.log(newData);
+
+    axios
+      .post(`http://localhost:8090/user/addToCart/${id}`, newData)
+      .then((result) => {
+        if (result.data.status === "Failed") {
+          alert(result.data.message);
+        } else {
+          alert(result.data.status);
+        }
+        // console.log(result.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   // add to wishlist handler
@@ -63,6 +76,18 @@ const SingleProduct = () => {
     newData.price = packPrice.price;
     newData.unit = packPrice.unit;
     console.log(newData);
+
+    axios
+      .post(`http://localhost:8090/user/addToWishlist/${id}`, newData)
+      .then((result) => {
+        if (result.data.status === "Failed") {
+          alert(result.data.message);
+        } else {
+          alert(result.data.status);
+        }
+        // console.log(result.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
