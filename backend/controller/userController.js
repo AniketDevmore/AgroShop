@@ -4,6 +4,7 @@ const {
   getproductById,
   addWishlist,
   addCart,
+  deleteWishlist,
 } = require("../db/db");
 
 const getUserDataById = (req, res, next) => {
@@ -75,10 +76,25 @@ const addToCart = (req, res, next) => {
     });
 };
 
+const deleteFromWishlist = (req, res, next) => {
+  // console.log(req.params.id, req.body.id);
+  deleteWishlist(req.params.id, req.body.id)
+    .then((userData) => {
+      // console.log(userData);
+      res.json({
+        status: "Product Successfully Removed from Wishlist",
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
 module.exports = {
   getUserDataById,
   getProduct,
   getProductData,
   addToWishlist,
   addToCart,
+  deleteFromWishlist,
 };

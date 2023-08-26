@@ -1,5 +1,6 @@
 #cartHeading {
   padding-top: 10px;
+  margin: 30px auto 90px auto;
 }
 
 #cartMain {
@@ -16,4 +17,39 @@
   color: rgb(255, 0, 0);
   text-shadow: 2px 2px 2px rgb(151, 82, 82);
   border-radius: 30px;
+}
+
+#cartTable tbody {
+  border-bottom: 2px solid gray;
+}
+
+.cartTd img {
+  display: block;
+  height: 90px;
+  width: 80px;
+  margin: auto;
+  background-color: rgb(138, 137, 137);
+}
+
+.addQtyBtn,
+.removeQtyBtn {
+  border: 1px solid rgb(4, 150, 4);
+  background-color: rgb(4, 150, 4);
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 900;
+}
+
+.addQtyBtn {
+  padding: 1px 8px 5px 8px;
+  margin-right: 10px;
+}
+.removeQtyBtn {
+  padding: 1.5px 11px 4.5px 11px;
+  margin-left: 5px;
+}
+
+.addQtyBtn:hover,
+.removeQtyBtn:hover {
+  background-color: rgb(3, 105, 3);
 }

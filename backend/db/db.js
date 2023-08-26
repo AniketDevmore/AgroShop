@@ -42,24 +42,19 @@ const addCart = (userId, data) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let existing = false;
-          if (user.cart.length > 0) {
-            existing = user.cart.find((ele) => ele.id == data.id);
-          } else {
-            user.cart.push(data);
-          }
+          let existing = user.cart.find((ele) => ele.id == data.id);
           // console.log(existing);
 
-          if (existing) {
-            rej("Cart already has the iteam!");
-          } else {
+          if (!existing) {
             user.cart.push(data);
+          } else {
+            rej("Cart already has this iteam!");
           }
 
           // console.log(user);
           res(user.save());
         } else {
-          rej("User Not Find!");
+          rej("User Not Found!");
         }
       })
       .catch((err) => {
@@ -73,23 +68,38 @@ const addWishlist = (userId, data) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let existing = false;
-          if (user.wishlist.length > 0) {
-            existing = user.wishlist.find((ele) => ele.id == data.id);
-          } else {
-            user.wishlist.push(data);
-          }
+          let existing = user.wishlist.find((ele) => ele.id == data.id);
           // console.log(existing);
 
-          if (existing) {
-            rej("Wishlist already has the iteam!");
-          } else {
+          if (!existing) {
             user.wishlist.push(data);
+          } else {
+            rej("Wishlist already has this iteam!");
           }
 
           res(user.save());
         } else {
-          rej("User Not Find!");
+          rej("User Not Found!");
+        }
+      })
+      .catch((err) => {
+        rej(err);
+      });
+  });
+};
+
+const deleteWishlist = (userId, productId) => {
+  return new Promise((res, rej) => {
+    User.findOne({ id: userId })
+      .then((user) => {
+        if (user) {
+          let searchedData = user.wishlist.find((ele) => ele.id == productId);
+          let index = user.wishlist.indexOf(searchedData);
+
+          user.wishlist.splice(index, 1);
+          res(user.save());
+        } else {
+          rej("Data Not Find!");
         }
       })
       .catch((err) => {
@@ -105,4 +115,5 @@ module.exports = {
   getproductById,
   addCart,
   addWishlist,
+  deleteWishlist,
 };

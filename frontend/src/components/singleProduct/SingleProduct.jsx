@@ -46,10 +46,11 @@ const SingleProduct = () => {
     newData.id = data.id;
     newData.catogary = data.catogary;
     newData.quantity = 1;
+    newData.img = data.img[0];
     newData.pack = packPrice.pack;
     newData.price = packPrice.price;
     newData.unit = packPrice.unit;
-    console.log(newData);
+    // console.log(newData);
 
     axios
       .post(`http://localhost:8090/user/addToCart/${id}`, newData)
@@ -72,10 +73,12 @@ const SingleProduct = () => {
     newData.id = data.id;
     newData.catogary = data.catogary;
     newData.quantity = 1;
+    newData.img = data.img[0];
     newData.pack = packPrice.pack;
     newData.price = packPrice.price;
     newData.unit = packPrice.unit;
-    console.log(newData);
+
+    // console.log(newData);
 
     axios
       .post(`http://localhost:8090/user/addToWishlist/${id}`, newData)

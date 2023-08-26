@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const profileData = useSelector((state) => state.counter.profile);
+  let [userHeaderData, setUserHeaderData] = useState({});
   let { id } = useParams("id");
+
+  const getUserData = () => {
+    axios
+      .get(`http://localhost:8090/user/getUserDataById/${id}`)
+      .then((data) => {
+        setUserHeaderData(data.data.data);
+        // console.log(userHeaderData);
+      })
+      .catch((err) => {
+        alert(err.toString());
+      });
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, [userHeaderData]);
   return (
     <div>
       <header>
@@ -32,7 +49,12 @@ const Header = () => {
             <li>
               <Link className="navLink" to={`/cart/${id}`}>
                 <i className="fa-solid fa-cart-shopping"></i>
-                <span id="cartIteams">{10}</span> Cart
+                <span id="cartIteams">
+                  {userHeaderData.cart == undefined
+                    ? 0
+                    : userHeaderData.cart.length}
+                </span>{" "}
+                Cart
               </Link>
             </li>
           </div>
