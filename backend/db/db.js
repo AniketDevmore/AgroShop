@@ -107,6 +107,26 @@ const deleteWishlist = (userId, productId) => {
       });
   });
 };
+
+const deleteCart = (userId, productId) => {
+  return new Promise((res, rej) => {
+    User.findOne({ id: userId })
+      .then((user) => {
+        if (user) {
+          let searchedData = user.cart.find((ele) => ele.id == productId);
+          let index = user.cart.indexOf(searchedData);
+
+          user.cart.splice(index, 1);
+          res(user.save());
+        } else {
+          rej("Data Not Find!");
+        }
+      })
+      .catch((err) => {
+        rej(err);
+      });
+  });
+};
 module.exports = {
   createNewUser,
   getUserByEmail,
@@ -116,4 +136,5 @@ module.exports = {
   addCart,
   addWishlist,
   deleteWishlist,
+  deleteCart,
 };

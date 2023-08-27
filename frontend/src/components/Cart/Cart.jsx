@@ -23,7 +23,25 @@ const Cart = () => {
 
   useEffect(() => {
     getUserData();
-  }, []);
+  }, [userData]);
+
+  const removeFromCart = (data) => {
+    // console.log(data);
+    axios
+      .delete(`http://localhost:8090/user/deleteFromCart/${id}`, {
+        data: { id: data },
+      })
+      .then((result) => {
+        if (result.data.status === "Failed") {
+          alert(result.data.message);
+        } else {
+          alert(result.data.status);
+        }
+        // console.log(result.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <Header />
@@ -50,7 +68,10 @@ const Cart = () => {
                   <h4>₹ {ele.price * ele.quantity}</h4>
                 </td>
                 <td className="cartTd">
-                  <button className=" cartRemoveBtn">
+                  <button
+                    onClick={() => removeFromCart(ele.id)}
+                    className=" cartRemoveBtn"
+                  >
                     <i className="fa-solid fa-trash"></i>
                   </button>
                 </td>
