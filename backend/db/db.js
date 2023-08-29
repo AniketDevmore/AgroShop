@@ -127,6 +127,51 @@ const deleteCart = (userId, productId) => {
       });
   });
 };
+
+const addQty = (userId, productId) => {
+  return new Promise((res, rej) => {
+    User.findOne({ id: userId })
+      .then((user) => {
+        if (user) {
+          let searchedData = user.cart.find((ele) => ele.id == productId);
+          let index = user.cart.indexOf(searchedData);
+          searchedData.quantity += 1;
+          user.cart.splice(index, 1);
+          user.cart.splice(index, 0, searchedData);
+          res(user.save());
+        } else {
+          rej("Data Not Find!");
+        }
+      })
+      .catch((err) => {
+        rej(err);
+      });
+  });
+};
+const reduceQty = (userId, productId) => {
+  return new Promise((res, rej) => {
+    User.findOne({ id: userId })
+      .then((user) => {
+        if (user) {
+          let searchedData = user.cart.find((ele) => ele.id == productId);
+          let index = user.cart.indexOf(searchedData);
+          searchedData.quantity -= 1;
+          user.cart.splice(index, 1);
+
+          if (searchedData.quantity >= 1) {
+            user.cart.splice(index, 0, searchedData);
+          }
+
+          res(user.save());
+        } else {
+          rej("Data Not Find!");
+        }
+      })
+      .catch((err) => {
+        rej(err);
+      });
+  });
+};
 module.exports = {
   createNewUser,
   getUserByEmail,
@@ -137,4 +182,6 @@ module.exports = {
   addWishlist,
   deleteWishlist,
   deleteCart,
+  addQty,
+  reduceQty,
 };

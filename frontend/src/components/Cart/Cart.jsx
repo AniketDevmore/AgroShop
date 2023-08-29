@@ -41,6 +41,28 @@ const Cart = () => {
       })
       .catch((err) => console.log(err));
   };
+  const addQtyOfProduct = (data) => {
+    axios
+      .post(`http://localhost:8090/user/addQtyOfProduct/${id}`, data)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const reduceQtyOfProduct = (data) => {
+    // console.log(data);
+    axios
+      .post(`http://localhost:8090/user/reduceQtyOfProduct/${id}`, data)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -60,8 +82,19 @@ const Cart = () => {
                     {ele.pack} {ele.unit}
                   </h6>
                   <h5>
-                    <button className="addQtyBtn">+</button>
-                    {ele.quantity} <button className="removeQtyBtn">-</button>
+                    <button
+                      onClick={() => addQtyOfProduct(ele)}
+                      className="addQtyBtn"
+                    >
+                      +
+                    </button>
+                    {ele.quantity}{" "}
+                    <button
+                      onClick={() => reduceQtyOfProduct(ele)}
+                      className="removeQtyBtn"
+                    >
+                      -
+                    </button>
                   </h5>
                 </td>
                 <td className="cartTd">

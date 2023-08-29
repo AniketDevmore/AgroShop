@@ -6,6 +6,8 @@ const {
   addCart,
   deleteWishlist,
   deleteCart,
+  addQty,
+  reduceQty,
 } = require("../db/db");
 
 const getUserDataById = (req, res, next) => {
@@ -97,7 +99,7 @@ const deleteFromCart = (req, res, next) => {
     .then((userData) => {
       // console.log(userData);
       res.json({
-        status: "Product Successfully Removed from Wishlist",
+        status: "Product Successfully Removed from Cart",
       });
     })
     .catch((err) => {
@@ -105,6 +107,31 @@ const deleteFromCart = (req, res, next) => {
     });
 };
 
+const addQtyOfProduct = (req, res, next) => {
+  // console.log(req.params.id, req.body);
+  addQty(req.params.id, req.body.id)
+    .then((userData) => {
+      // console.log(userData);
+      res.json({
+        status: "Product Successfully added",
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+const reduceQtyOfProduct = (req, res, next) => {
+  reduceQty(req.params.id, req.body.id)
+    .then((userData) => {
+      // console.log(userData);
+      res.json({
+        status: "Product Successfully removed",
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
 module.exports = {
   getUserDataById,
   getProduct,
@@ -113,4 +140,6 @@ module.exports = {
   addToCart,
   deleteFromWishlist,
   deleteFromCart,
+  addQtyOfProduct,
+  reduceQtyOfProduct,
 };
