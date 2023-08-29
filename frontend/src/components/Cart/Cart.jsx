@@ -39,16 +39,16 @@ const Cart = () => {
         }
         // console.log(result.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err.toString()));
   };
   const addQtyOfProduct = (data) => {
     axios
       .post(`http://localhost:8090/user/addQtyOfProduct/${id}`, data)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err.toString());
       });
   };
 
@@ -57,10 +57,10 @@ const Cart = () => {
     axios
       .post(`http://localhost:8090/user/reduceQtyOfProduct/${id}`, data)
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err.toString());
       });
   };
 
