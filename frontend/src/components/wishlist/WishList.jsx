@@ -70,7 +70,7 @@ const WishList = () => {
               </h6>
               <h6 id="wishPrice">₹{ele.price}</h6>
               <button onClick={() => addToCartHandler(ele)}>Add To Cart</button>
-              <button onClick={() => removeFromWishlist(ele.id)}>Remove</button>
+              <button onClick={() => removeFromWishlist(ele)}>Remove</button>
             </div>
           ))}
         </div>

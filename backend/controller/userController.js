@@ -94,7 +94,7 @@ const deleteFromWishlist = (req, res, next) => {
 };
 
 const deleteFromCart = (req, res, next) => {
-  // console.log(req.params.id, req.body.id);
+  // console.log(req.params.id, req.body);
   deleteCart(req.params.id, req.body.id)
     .then((userData) => {
       // console.log(userData);
@@ -109,7 +109,7 @@ const deleteFromCart = (req, res, next) => {
 
 const addQtyOfProduct = (req, res, next) => {
   // console.log(req.params.id, req.body);
-  addQty(req.params.id, req.body.id)
+  addQty(req.params.id, req.body)
     .then((userData) => {
       // console.log(userData);
       res.json({
@@ -121,7 +121,7 @@ const addQtyOfProduct = (req, res, next) => {
     });
 };
 const reduceQtyOfProduct = (req, res, next) => {
-  reduceQty(req.params.id, req.body.id)
+  reduceQty(req.params.id, req.body)
     .then((userData) => {
       // console.log(userData);
       res.json({

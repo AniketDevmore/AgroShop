@@ -102,7 +102,7 @@ const Cart = () => {
                 </td>
                 <td className="cartTd">
                   <button
-                    onClick={() => removeFromCart(ele.id)}
+                    onClick={() => removeFromCart(ele)}
                     className=" cartRemoveBtn"
                   >
                     <i className="fa-solid fa-trash"></i>

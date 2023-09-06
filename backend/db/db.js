@@ -42,7 +42,9 @@ const addCart = (userId, data) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let existing = user.cart.find((ele) => ele.id == data.id);
+          let existing = user.cart.find(
+            (ele) => ele.id === data.id && ele.pack === data.pack
+          );
           // console.log(existing);
 
           if (!existing) {
@@ -68,7 +70,9 @@ const addWishlist = (userId, data) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let existing = user.wishlist.find((ele) => ele.id == data.id);
+          let existing = user.wishlist.find(
+            (ele) => ele.id === data.id && ele.pack === data.pack
+          );
           // console.log(existing);
 
           if (!existing) {
@@ -88,12 +92,14 @@ const addWishlist = (userId, data) => {
   });
 };
 
-const deleteWishlist = (userId, productId) => {
+const deleteWishlist = (userId, product) => {
   return new Promise((res, rej) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let searchedData = user.wishlist.find((ele) => ele.id == productId);
+          let searchedData = user.wishlist.find(
+            (ele) => ele.id === product.id && ele.pack === product.pack
+          );
           let index = user.wishlist.indexOf(searchedData);
 
           user.wishlist.splice(index, 1);
@@ -108,14 +114,16 @@ const deleteWishlist = (userId, productId) => {
   });
 };
 
-const deleteCart = (userId, productId) => {
+const deleteCart = (userId, product) => {
   return new Promise((res, rej) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let searchedData = user.cart.find((ele) => ele.id == productId);
-          let index = user.cart.indexOf(searchedData);
+          let searchedData = user.cart.find(
+            (ele) => ele.id === product.id && ele.pack === product.pack
+          );
 
+          let index = user.cart.indexOf(searchedData);
           user.cart.splice(index, 1);
           res(user.save());
         } else {
@@ -128,12 +136,14 @@ const deleteCart = (userId, productId) => {
   });
 };
 
-const addQty = (userId, productId) => {
+const addQty = (userId, product) => {
   return new Promise((res, rej) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let searchedData = user.cart.find((ele) => ele.id == productId);
+          let searchedData = user.cart.find(
+            (ele) => ele.id === product.id && ele.pack === product.pack
+          );
           let index = user.cart.indexOf(searchedData);
           searchedData.quantity += 1;
           user.cart.splice(index, 1);
@@ -148,12 +158,14 @@ const addQty = (userId, productId) => {
       });
   });
 };
-const reduceQty = (userId, productId) => {
+const reduceQty = (userId, product) => {
   return new Promise((res, rej) => {
     User.findOne({ id: userId })
       .then((user) => {
         if (user) {
-          let searchedData = user.cart.find((ele) => ele.id == productId);
+          let searchedData = user.cart.find(
+            (ele) => ele.id === product.id && ele.pack === product.pack
+          );
           let index = user.cart.indexOf(searchedData);
           searchedData.quantity -= 1;
           user.cart.splice(index, 1);
