@@ -8,10 +8,13 @@ import { useParams } from "react-router-dom";
 const Cart = () => {
   let [userData, setUserData] = useState([]);
   let { id } = useParams("id");
+  const headers = {
+    token: sessionStorage.getItem("token"),
+  };
 
   const getUserData = () => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`)
+      .get(`http://localhost:8090/user/getUserDataById/${id}`, { headers })
       .then((data) => {
         setUserData(data.data.data.cart);
         // console.log(userHeaderData);
@@ -30,6 +33,7 @@ const Cart = () => {
     axios
       .delete(`http://localhost:8090/user/deleteFromCart/${id}`, {
         data: { id: data },
+        headers: headers,
       })
       .then((result) => {
         if (result.data.status === "Failed") {
@@ -43,7 +47,9 @@ const Cart = () => {
   };
   const addQtyOfProduct = (data) => {
     axios
-      .post(`http://localhost:8090/user/addQtyOfProduct/${id}`, data)
+      .post(`http://localhost:8090/user/addQtyOfProduct/${id}`, data, {
+        headers,
+      })
       .then((data) => {
         // console.log(data);
       })
@@ -55,7 +61,9 @@ const Cart = () => {
   const reduceQtyOfProduct = (data) => {
     // console.log(data);
     axios
-      .post(`http://localhost:8090/user/reduceQtyOfProduct/${id}`, data)
+      .post(`http://localhost:8090/user/reduceQtyOfProduct/${id}`, data, {
+        headers,
+      })
       .then((data) => {
         // console.log(data);
       })

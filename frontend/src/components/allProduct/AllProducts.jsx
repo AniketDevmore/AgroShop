@@ -10,9 +10,15 @@ const AllProducts = () => {
   const [productList, setProductList] = useState([]);
   const navigate = useNavigate();
   const { type } = useParams("type");
+  const headers = {
+    token: sessionStorage.getItem("token"),
+  };
+
   const getProduct = () => {
     axios
-      .get(`http://localhost:8090/user/getProduct/${type}`)
+      .get(`http://localhost:8090/user/getProduct/${type}`, {
+        headers,
+      })
       .then((data) => {
         setProductList(data.data.data);
         // console.log(data.data.data);

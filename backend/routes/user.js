@@ -10,8 +10,10 @@ const {
   addQtyOfProduct,
   reduceQtyOfProduct,
 } = require("../controller/userController");
+const { checkAutherization } = require("../middleware/middleware");
 const router = express.Router();
 
+router.use(checkAutherization);
 router.get("/getUserDataById/:id", getUserDataById);
 router.get("/getProduct/:type", getProduct);
 router.get("/getProductData/:id", getProductData);

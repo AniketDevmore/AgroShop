@@ -16,10 +16,13 @@ const SingleProduct = () => {
 
   const { pro } = useParams("pro");
   const { id } = useParams("id");
+  const headers = {
+    token: sessionStorage.getItem("token"),
+  };
 
   const getProductData = () => {
     axios
-      .get(`http://localhost:8090/user/getProductData/${pro}`)
+      .get(`http://localhost:8090/user/getProductData/${pro}`, { headers })
       .then((data) => {
         setProductData(data.data.data);
         // console.log(data.data.data);
@@ -53,7 +56,7 @@ const SingleProduct = () => {
     // console.log(newData);
 
     axios
-      .post(`http://localhost:8090/user/addToCart/${id}`, newData)
+      .post(`http://localhost:8090/user/addToCart/${id}`, newData, { headers })
       .then((result) => {
         if (result.data.status === "Failed") {
           alert(result.data.message);
@@ -81,7 +84,9 @@ const SingleProduct = () => {
     // console.log(newData);
 
     axios
-      .post(`http://localhost:8090/user/addToWishlist/${id}`, newData)
+      .post(`http://localhost:8090/user/addToWishlist/${id}`, newData, {
+        headers,
+      })
       .then((result) => {
         if (result.data.status === "Failed") {
           alert(result.data.message);

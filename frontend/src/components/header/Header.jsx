@@ -7,10 +7,13 @@ import { useSelector } from "react-redux";
 const Header = () => {
   let [userHeaderData, setUserHeaderData] = useState({});
   let { id } = useParams("id");
+  const headers = {
+    token: sessionStorage.getItem("token"),
+  };
 
   const getUserData = () => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`)
+      .get(`http://localhost:8090/user/getUserDataById/${id}`, { headers })
       .then((data) => {
         setUserHeaderData(data.data.data);
         // console.log(userHeaderData);

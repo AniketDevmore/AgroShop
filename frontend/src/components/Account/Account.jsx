@@ -9,10 +9,15 @@ export const Account = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [userData, setUserdata] = useState({});
+  const headers = {
+    token: sessionStorage.getItem("token"),
+  };
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`)
+      .get(`http://localhost:8090/user/getUserDataById/${id}`, {
+        headers,
+      })
       .then((data) => {
         // console.log(data.data.data);
         setUserdata(data.data.data);

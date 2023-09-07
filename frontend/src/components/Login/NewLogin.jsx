@@ -65,13 +65,13 @@ const NewLogin = () => {
     //   if (ele.email === data.email && ele.password === data.password) {
     //     // console.log(ele);
     //     if (ele.type === "user") {
-    //       // localStorage.setItem("token", "adjafkgfwejgfbwbfwhgergjvjwbjwjnvdbj");
+    //       // sessionStorage.setItem("token", "adjafkgfwejgfbwbfwhgergjvjwbjwjnvdbj");
 
     //       // dispatch(AuthChange(ele));
     //       console.log(ele);
     //       navigate(`/mainPage/${ele.id}`);
     //     } else if (ele.type === "admin") {
-    //       // localStorage.setItem("token", "adjafkgfwejgfbwbfwhgergjvjwbjwjnvdbj");
+    //       // sessionStorage.setItem("token", "adjafkgfwejgfbwbfwhgergjvjwbjwjnvdbj");
     //       // dispatch(AuthChange(ele));
     //       console.log(ele);
     //       navigate(`/adminPage/${ele.id}`);

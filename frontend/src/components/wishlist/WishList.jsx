@@ -8,10 +8,13 @@ import { useParams } from "react-router-dom";
 const WishList = () => {
   let [userData, setUserData] = useState([]);
   let { id } = useParams("id");
+  const headers = {
+    token: sessionStorage.getItem("token"),
+  };
 
   const getUserData = () => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`)
+      .get(`http://localhost:8090/user/getUserDataById/${id}`, { headers })
       .then((data) => {
         setUserData(data.data.data.wishlist);
         // console.log(userData);
@@ -28,7 +31,7 @@ const WishList = () => {
   const addToCartHandler = (data) => {
     // console.log(data);
     axios
-      .post(`http://localhost:8090/user/addToCart/${id}`, data)
+      .post(`http://localhost:8090/user/addToCart/${id}`, data, { headers })
       .then((result) => {
         if (result.data.status === "Failed") {
           alert(result.data.message);
@@ -44,6 +47,7 @@ const WishList = () => {
     axios
       .delete(`http://localhost:8090/user/deleteFromWishlist/${id}`, {
         data: { id: data },
+        headers: headers,
       })
       .then((result) => {
         if (result.data.status === "Failed") {
