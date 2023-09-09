@@ -62,23 +62,29 @@ const WishList = () => {
   return (
     <div>
       <Header />
-      <div id="wishMain">
-        <h2 id="wishListHeading">Wishlist</h2>
-        <div id="wishList">
-          {userData.map((ele, i) => (
-            <div key={i} id="wishListInner">
-              <img id="wishImg" src={ele.img} alt={ele.id} />
-              <h6 id="wishName">{ele.id}</h6>
-              <h6 id="wishQty">
-                {ele.pack} {ele.unit}
-              </h6>
-              <h6 id="wishPrice">₹{ele.price}</h6>
-              <button onClick={() => addToCartHandler(ele)}>Add To Cart</button>
-              <button onClick={() => removeFromWishlist(ele)}>Remove</button>
-            </div>
-          ))}
+      {userData.length === 0 ? (
+        <h4 style={{ margin: "100px" }}>Your wishlist is currently empty.</h4>
+      ) : (
+        <div id="wishMain">
+          <h2 id="wishListHeading">Wishlist</h2>
+          <div id="wishList">
+            {userData.map((ele, i) => (
+              <div key={i} id="wishListInner">
+                <img id="wishImg" src={ele.img} alt={ele.id} />
+                <h6 id="wishName">{ele.id}</h6>
+                <h6 id="wishQty">
+                  {ele.pack} {ele.unit}
+                </h6>
+                <h6 id="wishPrice">₹{ele.price}</h6>
+                <button onClick={() => addToCartHandler(ele)}>
+                  Add To Cart
+                </button>
+                <button onClick={() => removeFromWishlist(ele)}>Remove</button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <Footer />
     </div>
   );
