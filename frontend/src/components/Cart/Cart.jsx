@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 
 const Cart = () => {
   let [userData, setUserData] = useState([]);
+  const [subtotal, setSubtotal] = useState(0);
   let { id } = useParams("id");
   const headers = {
     token: sessionStorage.getItem("token"),
@@ -26,6 +27,11 @@ const Cart = () => {
 
   useEffect(() => {
     getUserData();
+
+    let total = userData.reduce((sum, ele) => {
+      return (sum += ele.quantity * ele.price);
+    }, 0);
+    setSubtotal(total);
   }, [userData]);
 
   const removeFromCart = (data) => {
@@ -72,55 +78,70 @@ const Cart = () => {
       });
   };
 
+  //checkout
+  const checkoutHandler = () => {};
+
   return (
     <div>
       <Header />
-      <div id="cartMain">
-        <h1 id="cartHeading">Cart</h1>
-        <table id="cartTable">
-          {userData.map((ele, i) => (
-            <tbody key={i}>
-              <tr className="cartTr">
-                <td className="cartTd">
-                  <img src={ele.img} alt={ele.id} />
-                </td>
-                <td className="cartTd">
-                  <h4>{ele.id}</h4>
-                  <h6>
-                    {ele.pack} {ele.unit}
-                  </h6>
-                  <h5>
+      {userData.length === 0 ? (
+        <h4 style={{ margin: "100px" }}>Your cart is currently empty.</h4>
+      ) : (
+        <div id="cartMain">
+          <h1 id="cartHeading">Cart</h1>
+          <table id="cartTable">
+            {userData.map((ele, i) => (
+              <tbody key={i}>
+                <tr className="cartTr">
+                  <td className="cartTd">
+                    <img src={ele.img} alt={ele.id} />
+                  </td>
+                  <td className="cartTd">
+                    <h4>{ele.id}</h4>
+                    <h6>
+                      {ele.pack} {ele.unit}
+                    </h6>
+                    <h5>
+                      <button
+                        onClick={() => addQtyOfProduct(ele)}
+                        className="addQtyBtn"
+                      >
+                        +
+                      </button>
+                      {ele.quantity}{" "}
+                      <button
+                        onClick={() => reduceQtyOfProduct(ele)}
+                        className="removeQtyBtn"
+                      >
+                        -
+                      </button>
+                    </h5>
+                  </td>
+                  <td className="cartTd">
+                    <h4>₹ {ele.price * ele.quantity}</h4>
+                  </td>
+                  <td className="cartTd">
                     <button
-                      onClick={() => addQtyOfProduct(ele)}
-                      className="addQtyBtn"
+                      onClick={() => removeFromCart(ele)}
+                      className=" cartRemoveBtn"
                     >
-                      +
+                      <i className="fa-solid fa-trash"></i>
                     </button>
-                    {ele.quantity}{" "}
-                    <button
-                      onClick={() => reduceQtyOfProduct(ele)}
-                      className="removeQtyBtn"
-                    >
-                      -
-                    </button>
-                  </h5>
-                </td>
-                <td className="cartTd">
-                  <h4>₹ {ele.price * ele.quantity}</h4>
-                </td>
-                <td className="cartTd">
-                  <button
-                    onClick={() => removeFromCart(ele)}
-                    className=" cartRemoveBtn"
-                  >
-                    <i className="fa-solid fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          ))}
-        </table>
-      </div>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+          {/* checkout section */}
+          <div className="totalCheckout">
+            <h5>Subtotal: ₹{subtotal}</h5>
+            <button className="btn btn-success" onClick={checkoutHandler}>
+              Checkout
+            </button>
+            <p>Shipping, taxes, and discount codes calculated at checkout.</p>
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   );

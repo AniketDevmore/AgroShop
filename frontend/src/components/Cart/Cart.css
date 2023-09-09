@@ -53,3 +53,19 @@
 .removeQtyBtn:hover {
   background-color: rgb(3, 105, 3);
 }
+
+/* checkout section */
+.totalCheckout {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin: 20px auto;
+}
+.totalCheckout > button {
+  width: 35%;
+  margin: auto;
+}
+.totalCheckout > p {
+  width: 70%;
+  margin: 10px auto;
+}
