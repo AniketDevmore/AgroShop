@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 const Cart = () => {
   let [userData, setUserData] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [total, setTotal] = useState(0);
   let { id } = useParams("id");
   const headers = {
     token: sessionStorage.getItem("token"),
@@ -32,6 +34,8 @@ const Cart = () => {
       return (sum += ele.quantity * ele.price);
     }, 0);
     setSubtotal(total);
+    setTax(total * 0.18);
+    setTotal(tax + total);
   }, [userData]);
 
   const removeFromCart = (data) => {
@@ -79,7 +83,20 @@ const Cart = () => {
   };
 
   //checkout
-  const checkoutHandler = () => {};
+  const checkoutHandler = () => {
+    axios
+      .post(`http://localhost:8090/user/addToOrder/${id}`, userData, {
+        headers,
+      })
+      .then((data) => {
+        // console.log(data);
+      })
+      .catch((err) => {
+        alert(err.toString());
+      });
+
+    alert(`Your order has placed of ₹${total}`);
+  };
 
   return (
     <div>
@@ -135,10 +152,11 @@ const Cart = () => {
           {/* checkout section */}
           <div className="totalCheckout">
             <h5>Subtotal: ₹{subtotal}</h5>
+            <h5>Tax: ₹{tax}</h5>
+            <h5>Total: ₹{total}</h5>
             <button className="btn btn-success" onClick={checkoutHandler}>
               Checkout
             </button>
-            <p>Shipping, taxes, and discount codes calculated at checkout.</p>
           </div>
         </div>
       )}

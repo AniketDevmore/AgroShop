@@ -8,6 +8,7 @@ const {
   deleteCart,
   addQty,
   reduceQty,
+  addOrder,
 } = require("../db/db");
 
 const getUserDataById = (req, res, next) => {
@@ -132,6 +133,12 @@ const reduceQtyOfProduct = (req, res, next) => {
       next(err);
     });
 };
+
+const addToOrder = (req, res, next) => {
+  // console.log(req.body, req.params.id);
+  addOrder(req.params.id, req.body);
+};
+
 module.exports = {
   getUserDataById,
   getProduct,
@@ -142,4 +149,5 @@ module.exports = {
   deleteFromCart,
   addQtyOfProduct,
   reduceQtyOfProduct,
+  addToOrder,
 };

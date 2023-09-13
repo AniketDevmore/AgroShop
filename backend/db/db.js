@@ -184,6 +184,25 @@ const reduceQty = (userId, product) => {
       });
   });
 };
+
+const addOrder = (userId, userData) => {
+  // console.log(111, userData, userId);
+  return new Promise((res, rej) => {
+    User.findOne({ id: userId })
+      .then((user) => {
+        // console.log(user);
+        user.cart.forEach((ele) => {
+          user.order.push(ele);
+        });
+        user.cart = [];
+        res(user.save());
+      })
+      .catch((err) => {
+        rej(err);
+      });
+  });
+};
+
 module.exports = {
   createNewUser,
   getUserByEmail,
@@ -196,4 +215,5 @@ module.exports = {
   deleteCart,
   addQty,
   reduceQty,
+  addOrder,
 };

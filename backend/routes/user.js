@@ -9,6 +9,7 @@ const {
   deleteFromCart,
   addQtyOfProduct,
   reduceQtyOfProduct,
+  addToOrder,
 } = require("../controller/userController");
 const { checkAutherization } = require("../middleware/middleware");
 const router = express.Router();
@@ -24,5 +25,6 @@ router.delete("/deleteFromCart/:id", deleteFromCart);
 //cart add remove operator
 router.post("/addQtyOfProduct/:id", addQtyOfProduct);
 router.post("/reduceQtyOfProduct/:id", reduceQtyOfProduct);
+router.post("/addToOrder/:id", addToOrder);
 
 module.exports = router;

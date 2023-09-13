@@ -12,6 +12,7 @@ const userSchema = new Schema({
   type: String,
   cart: [Object],
   wishlist: [Object],
+  order: [Object],
 });
 
 const User = mongoose.model("User", userSchema);
