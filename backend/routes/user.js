@@ -10,6 +10,7 @@ const {
   addQtyOfProduct,
   reduceQtyOfProduct,
   addToOrder,
+  getOrderById,
 } = require("../controller/userController");
 const { checkAutherization } = require("../middleware/middleware");
 const router = express.Router();
@@ -26,5 +27,6 @@ router.delete("/deleteFromCart/:id", deleteFromCart);
 router.post("/addQtyOfProduct/:id", addQtyOfProduct);
 router.post("/reduceQtyOfProduct/:id", reduceQtyOfProduct);
 router.post("/addToOrder/:id", addToOrder);
+router.get("/getOrders/:id", getOrderById);
 
 module.exports = router;

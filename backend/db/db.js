@@ -203,6 +203,9 @@ const addOrder = (userId, userData) => {
   });
 };
 
+const getUserOrders = (userId) => {
+  return User.findOne({ id: userId });
+};
 module.exports = {
   createNewUser,
   getUserByEmail,
@@ -216,4 +219,5 @@ module.exports = {
   addQty,
   reduceQty,
   addOrder,
+  getUserOrders,
 };

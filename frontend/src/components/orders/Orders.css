@@ -8,3 +8,10 @@
 #orderTable {
   width: 100%;
 }
+
+.orderImg {
+  background-color: rgb(196, 196, 196);
+  height: 150px;
+  width: 150px;
+  margin: auto;
+}

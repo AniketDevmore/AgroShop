@@ -9,6 +9,7 @@ const {
   addQty,
   reduceQty,
   addOrder,
+  getUserOrders,
 } = require("../db/db");
 
 const getUserDataById = (req, res, next) => {
@@ -136,7 +137,28 @@ const reduceQtyOfProduct = (req, res, next) => {
 
 const addToOrder = (req, res, next) => {
   // console.log(req.body, req.params.id);
-  addOrder(req.params.id, req.body);
+  addOrder(req.params.id, req.body)
+    .then((msg) => {
+      res.json({
+        status: "Order Successfully placed",
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
+const getOrderById = (req, res, next) => {
+  getUserOrders(req.params.id)
+    .then((data) => {
+      res.json({
+        status: "Success",
+        orders: data.order,
+      });
+    })
+    .catch((err) => {
+      next(err);
+    });
 };
 
 module.exports = {
@@ -150,4 +172,5 @@ module.exports = {
   addQtyOfProduct,
   reduceQtyOfProduct,
   addToOrder,
+  getOrderById,
 };
