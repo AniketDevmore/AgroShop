@@ -22,7 +22,7 @@ const SingleProduct = () => {
 
   const getProductData = () => {
     axios
-      .get(`http://localhost:8090/user/getProductData/${pro}`, { headers })
+      .get(`${import.meta.env.VITE_REACT_APP_URL}/user/getProductData/${pro}`, { headers })
       .then((data) => {
         setProductData(data.data.data);
         // console.log(data.data.data);
@@ -56,7 +56,7 @@ const SingleProduct = () => {
     // console.log(newData);
 
     axios
-      .post(`http://localhost:8090/user/addToCart/${id}`, newData, { headers })
+      .post(`${import.meta.env.VITE_REACT_APP_URL}/user/addToCart/${id}`, newData, { headers })
       .then((result) => {
         if (result.data.status === "Failed") {
           alert(result.data.message);
@@ -84,7 +84,7 @@ const SingleProduct = () => {
     // console.log(newData);
 
     axios
-      .post(`http://localhost:8090/user/addToWishlist/${id}`, newData, {
+      .post(`${import.meta.env.VITE_REACT_APP_URL}/user/addToWishlist/${id}`, newData, {
         headers,
       })
       .then((result) => {

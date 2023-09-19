@@ -14,7 +14,9 @@ const Orders = () => {
 
   const getOrder = () => {
     axios
-      .get(`http://localhost:8090/user/getOrders/${id}`, { headers })
+      .get(`${import.meta.env.VITE_REACT_APP_URL}/user/getOrders/${id}`, {
+        headers,
+      })
       .then((data) => {
         // console.log(data.data.orders);
         setOrder(data.data.orders);
@@ -26,7 +28,7 @@ const Orders = () => {
 
   useEffect(() => {
     getOrder();
-  }, [order]);
+  }, []);
   return (
     <div>
       <Header />

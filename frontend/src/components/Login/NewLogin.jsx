@@ -37,7 +37,7 @@ const NewLogin = () => {
 
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:8090/auth/login", data)
+      .post(`${import.meta.env.VITE_REACT_APP_URL}/auth/login`, data)
       .then((result) => {
         // console.log(result.data);
         if (result.data.status === "Success") {

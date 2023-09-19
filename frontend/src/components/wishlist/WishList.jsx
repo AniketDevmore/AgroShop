@@ -14,7 +14,9 @@ const WishList = () => {
 
   const getUserData = () => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`, { headers })
+      .get(`${import.meta.env.VITE_REACT_APP_URL}/user/getUserDataById/${id}`, {
+        headers,
+      })
       .then((data) => {
         setUserData(data.data.data.wishlist);
         // console.log(userData);
@@ -26,12 +28,16 @@ const WishList = () => {
 
   useEffect(() => {
     getUserData();
-  }, [userData]);
+  }, []);
 
   const addToCartHandler = (data) => {
     // console.log(data);
     axios
-      .post(`http://localhost:8090/user/addToCart/${id}`, data, { headers })
+      .post(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/addToCart/${id}`,
+        data,
+        { headers }
+      )
       .then((result) => {
         if (result.data.status === "Failed") {
           alert(result.data.message);
@@ -45,10 +51,13 @@ const WishList = () => {
 
   const removeFromWishlist = (data) => {
     axios
-      .delete(`http://localhost:8090/user/deleteFromWishlist/${id}`, {
-        data: { id: data },
-        headers: headers,
-      })
+      .delete(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/deleteFromWishlist/${id}`,
+        {
+          data: { id: data },
+          headers: headers,
+        }
+      )
       .then((result) => {
         if (result.data.status === "Failed") {
           alert(result.data.message);

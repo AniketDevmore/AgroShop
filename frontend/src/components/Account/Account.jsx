@@ -15,7 +15,7 @@ export const Account = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`, {
+      .get(`${import.meta.env.VITE_REACT_APP_URL}/user/getUserDataById/${id}`, {
         headers,
       })
       .then((data) => {

@@ -17,7 +17,9 @@ const Cart = () => {
 
   const getUserData = () => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`, { headers })
+      .get(`${import.meta.env.VITE_REACT_APP_URL}/user/getUserDataById/${id}`, {
+        headers,
+      })
       .then((data) => {
         setUserData(data.data.data.cart);
         // console.log(userHeaderData);
@@ -36,15 +38,18 @@ const Cart = () => {
     setSubtotal(total);
     setTax(total * 0.18);
     setTotal(tax + total);
-  }, [userData]);
+  }, []);
 
   const removeFromCart = (data) => {
     // console.log(data);
     axios
-      .delete(`http://localhost:8090/user/deleteFromCart/${id}`, {
-        data: { id: data },
-        headers: headers,
-      })
+      .delete(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/deleteFromCart/${id}`,
+        {
+          data: { id: data },
+          headers: headers,
+        }
+      )
       .then((result) => {
         if (result.data.status === "Failed") {
           alert(result.data.message);
@@ -57,9 +62,13 @@ const Cart = () => {
   };
   const addQtyOfProduct = (data) => {
     axios
-      .post(`http://localhost:8090/user/addQtyOfProduct/${id}`, data, {
-        headers,
-      })
+      .post(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/addQtyOfProduct/${id}`,
+        data,
+        {
+          headers,
+        }
+      )
       .then((data) => {
         // console.log(data);
       })
@@ -71,9 +80,13 @@ const Cart = () => {
   const reduceQtyOfProduct = (data) => {
     // console.log(data);
     axios
-      .post(`http://localhost:8090/user/reduceQtyOfProduct/${id}`, data, {
-        headers,
-      })
+      .post(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/reduceQtyOfProduct/${id}`,
+        data,
+        {
+          headers,
+        }
+      )
       .then((data) => {
         // console.log(data);
       })
@@ -85,9 +98,13 @@ const Cart = () => {
   //checkout
   const checkoutHandler = () => {
     axios
-      .post(`http://localhost:8090/user/addToOrder/${id}`, userData, {
-        headers,
-      })
+      .post(
+        `${import.meta.env.VITE_REACT_APP_URL}/user/addToOrder/${id}`,
+        userData,
+        {
+          headers,
+        }
+      )
       .then((data) => {
         // console.log(data);
       })

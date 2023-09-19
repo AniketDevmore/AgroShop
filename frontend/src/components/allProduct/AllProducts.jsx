@@ -16,7 +16,7 @@ const AllProducts = () => {
 
   const getProduct = () => {
     axios
-      .get(`http://localhost:8090/user/getProduct/${type}`, {
+      .get(`${import.meta.env.VITE_REACT_APP_URL}/user/getProduct/${type}`, {
         headers,
       })
       .then((data) => {

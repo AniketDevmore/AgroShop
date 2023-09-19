@@ -13,7 +13,7 @@ const Header = () => {
 
   const getUserData = () => {
     axios
-      .get(`http://localhost:8090/user/getUserDataById/${id}`, { headers })
+      .get(`${import.meta.env.VITE_REACT_APP_URL}/user/getUserDataById/${id}`, { headers })
       .then((data) => {
         setUserHeaderData(data.data.data);
         // console.log(userHeaderData);
@@ -25,7 +25,7 @@ const Header = () => {
 
   useEffect(() => {
     getUserData();
-  }, [userHeaderData]);
+  }, []);
   return (
     <div>
       <header>

@@ -41,7 +41,7 @@ export const NewSignUp = () => {
   const onSubmit = (data) => {
     if (data.password === data.confirmPassword) {
       axios
-        .post("http://localhost:8090/auth/createUser", data)
+        .post(`${import.meta.env.VITE_REACT_APP_URL}/auth/createUser`, data)
         .then((result) => {
           // console.log(result.data);
           alert(result.data.message);
