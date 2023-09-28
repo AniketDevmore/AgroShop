@@ -33,7 +33,7 @@ const checkPassword = (req, res, next) => {
       });
     })
     .catch((err) => {
-      next(new Error("Please Enter Valid Email or Password"));
+      next(err);
     });
 };
 
