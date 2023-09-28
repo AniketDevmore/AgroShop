@@ -98,6 +98,7 @@ const NewLogin = () => {
           label="Email"
           variant="standard"
           name="email"
+          autoComplete="email"
           {...register("email", {
             required: true,
             pattern:
@@ -125,7 +126,7 @@ const NewLogin = () => {
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }

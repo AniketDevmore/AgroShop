@@ -130,7 +130,7 @@ export const NewSignUp = () => {
                   onClick={handleClickShowPassword1}
                   onMouseDown={handleMouseDownPassword1}
                 >
-                  {showPassword1 ? <VisibilityOff /> : <Visibility />}
+                  {showPassword1 ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }
@@ -162,7 +162,7 @@ export const NewSignUp = () => {
                   onClick={handleClickShowPassword2}
                   onMouseDown={handleMouseDownPassword2}
                 >
-                  {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                  {showPassword2 ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             }
