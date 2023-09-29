@@ -13,19 +13,28 @@ const Category = () => {
     <div>
       <div className="products">
         <li onClick={() => clickHandle("Insecticide")} className="proList">
-          <img src="../../../images/insecticide.png" alt="insceticide" />
+          <img
+            src="../../../public/static/images/insecticide.png"
+            alt="insceticide"
+          />
           <h3>Insecticide</h3>
         </li>
         <li onClick={() => clickHandle("Fungicide")} className="proList">
-          <img src="../../../images/fungicide.png" alt="fungicide" />
+          <img
+            src="../../../public/static/images/fungicide.png"
+            alt="fungicide"
+          />
           <h3>Fungicide</h3>
         </li>
         <li onClick={() => clickHandle("PGR")} className="proList">
-          <img src="../../../images/pgr.png" alt="pgr" />
+          <img src="../../../public/static/images/pgr.png" alt="pgr" />
           <h3>PGR</h3>
         </li>
         <li onClick={() => clickHandle("Herbicide")} className="proList">
-          <img src="../../../images/herbicide.png" alt="herbicide" />
+          <img
+            src="../../../public/static/images/herbicide.png"
+            alt="herbicide"
+          />
           <h3>Herbicide</h3>
         </li>
       </div>

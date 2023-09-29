@@ -51,7 +51,7 @@ const Footer = () => {
           <a href="#">
             <img
               className="footerImg"
-              src="../../../images/Instagram-Icon.png"
+              src="../../../public/static/images/Instagram-Icon.png"
               alt="instagram"
             />
           </a>
@@ -59,7 +59,7 @@ const Footer = () => {
           <a href="#">
             <img
               className="footerImg"
-              src="../../../images/Facebook_Icon.png"
+              src="../../../public/static/images/Facebook_Icon.png"
               alt="facebook"
             />
           </a>
@@ -67,7 +67,7 @@ const Footer = () => {
           <a href="#">
             <img
               className="footerImg"
-              src="../../../images/Youtube-Icon.png"
+              src="../../../public/static/images/Youtube-Icon.png"
               alt="youtube"
             />
           </a>
@@ -75,7 +75,7 @@ const Footer = () => {
           <a href="#">
             <img
               className="footerImg"
-              src="../../../images/Twitter-Icon.png"
+              src="../../../public/static/images/Twitter-Icon.png"
               alt="twitter"
             />
           </a>
@@ -83,7 +83,7 @@ const Footer = () => {
           <a href="#">
             <img
               className="footerImg"
-              src="../../../images/LinkedIn-Icon.png"
+              src="../../../public/static/images/LinkedIn-Icon.png"
               alt="linkedIn"
             />
           </a>
