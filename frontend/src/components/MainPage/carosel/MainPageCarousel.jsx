@@ -13,7 +13,7 @@ const MainPageCarousel = () => {
           <div className="carousel-item active" data-bs-interval="4000">
             <img
               style={{ height: "400px", maxWidth: "100vw", margin: "auto" }}
-              src="../../../public/static/images/carosel1.jpg"
+              src="../../../../public/static/images/carosel1.jpg"
               className="d-block w-100"
               alt="carosel1"
             />
@@ -21,7 +21,7 @@ const MainPageCarousel = () => {
           <div className="carousel-item" data-bs-interval="4000">
             <img
               style={{ height: "400px", maxWidth: "100vw", margin: "auto" }}
-              src="../../../public/static/images/carosel2.jpg"
+              src="../../../../public/static/images/carosel2.jpg"
               className="d-block w-100"
               alt="carosel2"
             />
