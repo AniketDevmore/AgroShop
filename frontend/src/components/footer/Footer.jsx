@@ -1,6 +1,11 @@
 import React from "react";
 import "./Footer.css";
 import { Link, useParams } from "react-router-dom";
+import insta from "../../../public/static/images/Instagram-Icon.png";
+import fb from "../../../public/static/images/Facebook_Icon.png";
+import youtube from "../../../public/static/images/Youtube-Icon.png";
+import twitter from "../../../public/static/images/Twitter-Icon.png";
+import linkedin from "../../../public/static/images/LinkedIn-Icon.png";
 
 const Footer = () => {
   const { id } = useParams();
@@ -49,43 +54,23 @@ const Footer = () => {
           <h5 className="h5">FOLLOW US</h5>
 
           <a href="#">
-            <img
-              className="footerImg"
-              src="../../../../public/static/images/Instagram-Icon.png"
-              alt="instagram"
-            />
+            <img className="footerImg" src={insta} alt="instagram" />
           </a>
 
           <a href="#">
-            <img
-              className="footerImg"
-              src="../../../../public/static/images/Facebook_Icon.png"
-              alt="facebook"
-            />
+            <img className="footerImg" src={fb} alt="facebook" />
           </a>
 
           <a href="#">
-            <img
-              className="footerImg"
-              src="../../../../public/static/images/Youtube-Icon.png"
-              alt="youtube"
-            />
+            <img className="footerImg" src={youtube} alt="youtube" />
           </a>
 
           <a href="#">
-            <img
-              className="footerImg"
-              src="../../../../public/static/images/Twitter-Icon.png"
-              alt="twitter"
-            />
+            <img className="footerImg" src={twitter} alt="twitter" />
           </a>
 
           <a href="#">
-            <img
-              className="footerImg"
-              src="../../../../public/static/images/LinkedIn-Icon.png"
-              alt="linkedIn"
-            />
+            <img className="footerImg" src={linkedin} alt="linkedIn" />
           </a>
         </div>
       </div>

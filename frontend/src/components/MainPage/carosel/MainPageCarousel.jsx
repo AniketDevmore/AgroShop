@@ -1,5 +1,7 @@
 import React from "react";
 import "./MainPageCarousel.css";
+import carosel1 from "../../../../public/static/images/carosel1.jpg";
+import carosel2 from "../../../../public/static/images/carosel2.jpg";
 
 const MainPageCarousel = () => {
   return (
@@ -13,7 +15,7 @@ const MainPageCarousel = () => {
           <div className="carousel-item active" data-bs-interval="4000">
             <img
               style={{ height: "400px", maxWidth: "100vw", margin: "auto" }}
-              src="../../../../public/static/images/carosel1.jpg"
+              src={carosel1}
               className="d-block w-100"
               alt="carosel1"
             />
@@ -21,7 +23,7 @@ const MainPageCarousel = () => {
           <div className="carousel-item" data-bs-interval="4000">
             <img
               style={{ height: "400px", maxWidth: "100vw", margin: "auto" }}
-              src="../../../../public/static/images/carosel2.jpg"
+              src={carosel2}
               className="d-block w-100"
               alt="carosel2"
             />
